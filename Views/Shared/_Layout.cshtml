@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from demo.graygrids.com/themes/estatebit/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Apr 2024 17:30:31 GMT -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>@ViewData["Title"] - DN2ndHome</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap.min.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="~/assets/fonts/line-icons.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/slicknav.css">
+    <!-- Color Switcher -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/color-switcher.css">
+    <!-- Range Slider -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/ion.rangeSlider.css">
+    <!-- Range Slider  -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/ion.rangeSlider.skinFlat.css">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/nivo-lightbox.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/animate.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/owl.carousel.css">
+    <!-- Rav Slider -->
+    <link rel="stylesheet" type="text/css" href="~/assets/extras/settings.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/extras/layers.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/extras/navigation.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/responsive.css">
+
+</head>
+<body>
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+        <!-- Start Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8 col-xs-12">
+                        <!-- Start Contact Info -->
+                        <ul class="links clearfix">
+                            <li><i class="lni-phone-handset"></i>0364956400</li>
+                            <li><i class="lni-envelope"></i>phantienquan1509@gmail.com</li>
+                            <li><a href="#"><i class="lni-map-marker"></i> Ngu Hanh Son, Da Nang, VietNam</a></li>
+                        </ul>
+                        <!-- End Contact Info -->
+                    </div>
+                    <div class="col-lg-5 col-md-4 col-xs-12">
+                        <div class="roof-social float-right">
+                            <a class="facebook" href="#"><i class="lni-facebook-filled"></i></a>
+                            <a class="twitter" href="#"><i class="lni-twitter-filled"></i></a>
+                            <a class="instagram" href="#"><i class="lni-instagram-filled"></i></a>
+                            <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Bar -->
+        <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="lin-menu"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="~/assets/img/logo.png" alt=""></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-center">
+                        <li class="nav-item active">
+                            <a class="nav-link dropdown-toggle" asp-area="" asp-controller="Home" asp-action="Index" aria-haspopup="true" aria-expanded="false">
+                                Trang chủ <i class="fa fa-angle-down"></i>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="List" asp-action="Index">
+                                Tin đăng
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                                Về chúng tôi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-area="Admin" asp-action="Index">
+                                Liên hệ
+                            </a>
+                        </li>
+
+                        <partial name="_LoginPartial"></partial>
+
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu">
+                <li>
+                    <a class="active" href="index.html">
+                        Home
+                    </a>
+                    <ul class="dropdown">
+                        <li>
+                            <a class="active" href="index.html">
+                                Home V1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index-2.html">
+                                Home V2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index-3.html">
+                                Home V3
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Listing
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="listing.html">Simple Listing</a></li>
+                        <li><a href="grid-listing.html">Grid Listing</a></li>
+                        <li><a href="listing-map.html">List with Google Map</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Property</a>
+                    <ul class="dropdown">
+                        <li><a href="property.html">Default- Variation</a></li>
+                        <li><a href="single-property.html">Single Property</a></li>
+                        <li><a href="full-gallery.html">Full Width Gallery</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        Gallery
+                    </a>
+                    <ul class="dropdown">
+                        <li><a href="portfolio-2.html">2 Columns Gallery</a></li>
+                        <li><a href="portfolio-3.html">3 Columns Gallery</a></li>
+                        <li><a href="portfolio-4.html">4 Columns Gallery</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Pages</a>
+                    <ul class="dropdown">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="agents.html">Agents</a></li>
+                        <li><a href="rent.html">For Rent</a></li>
+                        <li><a href="sale.html">For Sale</a></li>
+                        <li><a href="pricing.html">Pricing Tables</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="submit-property.html">Submission Form</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="typography.html">Typography</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Blog</a>
+                    <ul class="dropdown">
+                        <li><a href="blog.html">Blog Page</a></li>
+                        <li><a href="single-blog.html">Blog Single Page</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <div class="clearfix"></div>
+    </header>
+    <!-- Header Area wrapper End -->
+    @RenderBody()
+
+    <!-- Footer Section Start -->
+    <footer id="footer" class="footer-area section-padding">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <h3 class="footer-titel">Dịch vụ</h3>
+                        <ul class="footer-link">
+                            <li><a href="#">Hỗ trợ tìm kiếm</a></li>
+                            <li><a href="#">Hỗ trợ cho thuê</a></li>
+                            <li><a href="#">TÌm bạn ở ghép</a></li>
+                            <li><a href="#">Liên hệ tư vấn</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <h3 class="footer-titel">Link</h3>
+                        <ul class="footer-link">
+                            <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">Danh sách tin đăng</a></li>
+                            <li><a href="#">Giới thiệu</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Đăng nhập</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <h3 class="footer-titel">Liên hệ với chúng tôi</h3>
+                        <ul class="address">
+                            <li>
+                                <a href="#"><i class="lni-map-marker"></i> Ngũ Hành Sơn, Đà Nẵng</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="lni-phone-handset"></i> 0364956400</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="lni-envelope"></i> phantienquan1509@gmail.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <h3 class="footer-titel">Subscribe <span>on Our News</span></h3>
+                        <form method="post" id="subscribe-form" name="subscribe-form" class="validate">
+                            <div class="form-group is-empty">
+                                <input type="email" value="" name="Email" class="form-control" id="EMAIL" placeholder="Email address" required="">
+                                <button type="submit" name="subscribe" id="subscribes" class="btn btn-common sub-btn"><i class="lni-envelope"></i></button>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                        <div class="social-icon">
+                            <a class="facebook" href="#"><i class="lni-facebook-filled"></i></a>
+                            <a class="twitter" href="#"><i class="lni-twitter-filled"></i></a>
+                            <a class="instagram" href="#"><i class="lni-instagram-filled"></i></a>
+                            <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <section id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Copyright © 2018 <a rel="nofollow" href="https://uideck.com/">UIdeck</a> All Right Reserved</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="lni-chevron-up"></i>
+    </a>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/assets/js/jquery-min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+@*     <script src="~/assets/js/color-switcher.js"></script> *@
+    <script src="~/assets/js/jquery.mixitup.js"></script>
+    <script src="~/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/assets/js/ion.rangeSlider.js"></script>
+    <script src="~/assets/js/jquery.parallax.js"></script>
+    <script src="~/assets/js/waypoints.min.js"></script>
+    <script src="~/assets/js/wow.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/jquery.slicknav.js"></script>
+    <script src="~/assets/js/nivo-lightbox.js"></script>
+    <script src="~/assets/js/jquery.slicknav.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/assets/js/form-validator.min.js"></script>
+    <script src="~/assets/js/contact-form-script.min.js"></script>
+    <script src="~/assets/js/jquery.themepunch.tools.min.js"></script>
+    <script src="~/assets/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS -->
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.migration.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/extensions/revolution.extension.video.min.js"></script>
+
+    <script type="text/javascript">
+        var tpj = jQuery;
+        var revapi1078;
+        tpj(document).ready(function () {
+            if (tpj("#rev_slider_1078_1").revolution == undefined) {
+                revslider_showDoubleJqueryError("#rev_slider_1078_1");
+            } else {
+                revapi1078 = tpj("#rev_slider_1078_1").show().revolution({
+                    sliderType: "standard",
+                    jsFileLocation: "revolution/js/",
+                    sliderLayout: "fullwidth",
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    navigation: {
+                        keyboardNavigation: "off",
+                        keyboard_direction: "horizontal",
+                        mouseScrollNavigation: "off",
+                        mouseScrollReverse: "default",
+                        onHoverStop: "off",
+                        touch: {
+                            touchenabled: "on",
+                            swipe_threshold: 75,
+                            swipe_min_touches: 1,
+                            swipe_direction: "horizontal",
+                            drag_block_vertical: false
+                        }
+                        ,
+                        arrows: {
+                            style: "zeus",
+                            enable: true,
+                            hide_onmobile: true,
+                            hide_under: 600,
+                            hide_onleave: true,
+                            hide_delay: 200,
+                            hide_delay_mobile: 1200,
+                            tmp: '<div class="tp-title-wrap">    <div class="tp-arr-imgholder"></div> </div>',
+                            left: {
+                                h_align: "left",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            },
+                            right: {
+                                h_align: "right",
+                                v_align: "center",
+                                h_offset: 30,
+                                v_offset: 0
+                            }
+                        }
+                        ,
+                        bullets: {
+                            enable: false,
+                            hide_onmobile: true,
+                            hide_under: 600,
+                            style: "metis",
+                            hide_onleave: true,
+                            hide_delay: 200,
+                            hide_delay_mobile: 1200,
+                            direction: "horizontal",
+                            h_align: "center",
+                            v_align: "bottom",
+                            h_offset: 0,
+                            v_offset: 30,
+                            space: 5,
+                            tmp: '<span class="tp-bullet-img-wrap">  <span class="tp-bullet-image"></span></span><span class="tp-bullet-title">{{title}}</span>'
+                        }
+                    },
+                    viewPort: {
+                        enable: true,
+                        outof: "pause",
+                        visible_area: "80%",
+                        presize: false
+                    },
+                    responsiveLevels: [1240, 1024, 778, 480],
+                    visibilityLevels: [1240, 1024, 778, 480],
+                    gridwidth: [1240, 1024, 778, 480],
+                    gridheight: [600, 600, 500, 400],
+                    lazyType: "none",
+                    parallax: {
+                        type: "mouse",
+                        origo: "slidercenter",
+                        speed: 2000,
+                        levels: [2, 3, 4, 5, 6, 7, 12, 16, 10, 50, 47, 48, 49, 50, 51, 55],
+                        type: "mouse",
+                    },
+                    shadow: 0,
+                    spinner: "off",
+                    stopLoop: "off",
+                    stopAfterLoops: -1,
+                    stopAtSlide: -1,
+                    shuffle: "off",
+                    autoHeight: "off",
+                    hideThumbsOnMobile: "off",
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    debugMode: false,
+                    fallbacks: {
+                        simplifyAll: "off",
+                        nextSlideOnWindowFocus: "off",
+                        disableFocusListener: false,
+                    }
+                });
+            }
+        }); /*ready*/
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+<!-- Mirrored from demo.graygrids.com/themes/estatebit/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Apr 2024 17:30:54 GMT -->
+</html>
