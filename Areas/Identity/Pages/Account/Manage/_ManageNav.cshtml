@@ -1,0 +1,64 @@
+﻿@inject SignInManager<TQuanHomeUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+@* <ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+    }
+    <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
+</ul>
+ *@
+
+<div class="user-profile-box">
+    <!--header -->
+    <div class="header clearfix">
+        <img src="~/assets/img/avatar/default.jpg" alt="avatar" class="img-fluid profile-img">
+        <h2 class="text-dark">Quân Phan</h2>
+    </div>
+    <!-- Detail -->
+    <div class="detail clearfix">
+        <ul>
+            <li>
+                <a class="nav-link">
+                    <i class="lni-files"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">
+                    <i class="lni-user"></i>Hồ sơ
+                </a>
+            </li>
+            <li>
+                <a>
+                    <i class="lni-home"></i>Tin đăng của tôi
+                </a>
+            </li>
+            <li>
+                <a>
+                    <i class="lni-heart"></i>Tin đăng đã lưu
+                </a>
+            </li>
+            <li>
+                <a>
+                    <i class="lni-plus"></i>Đăng tin mới
+                </a>
+            </li>
+            <li>
+                <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">
+                    <i class="lni-lock"></i> Đổi mật khẩu
+                </a>
+            </li>
+            <li>
+                <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
+                    <i class="lni-logout"></i>Đăng xuất
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
