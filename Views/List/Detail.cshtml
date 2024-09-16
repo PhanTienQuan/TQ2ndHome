@@ -1,4 +1,6 @@
-﻿@{
+﻿
+
+@* @{
     ViewData["Title"] = "Danh sach";
 }
 
@@ -12,34 +14,16 @@
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-xs-12">
                     <div class="info">
-                        @* <h3>Phòng trọ 346 Mỹ An đầy đủ nội thất an ninh 24/24 <span class="badge">sale</span></h3> *@
                         <div class="label-inner">
                             <span class="label-status label">Đang cho thuê</span>
                         </div>
                         <p class="address"><i class="lni-map-marker"></i> Mỹ An, Ngũ Hành Sơn, Đà Nẵng</p>
                     </div>
                 </div>
-               @*  <div class="col-lg-4 col-md-12 col-xs-12">
-                    <div class="details">
-                        <div class="details-listing">
-                            <p>Bedrooms</p>
-                            <h5>05</h5>
-                        </div>
-                        <div class="details-listing">
-                            <p>Washrooms</p>
-                            <h5>06</h5>
-                        </div>
-                        <div class="details-listing">
-                            <p>Size (Sq.ft)</p>
-                            <h5>1650</h5>
-                        </div>
-                    </div>
-                </div> *@
                 <div class="col-lg-4 col-md-12 col-xs-12">
                     <div class="others">
                         <ul>
                             <li><span>2.200.000</span></li>
-                           @*  <li><a href="#"><i class="lni-bookmark-alt"></i></a></li> *@
                             <li><a href="#"><i class="lni-heart"></i></a></li>
                         </ul>
                     </div>
@@ -95,9 +79,6 @@
                                 <span><i class="lni-phone-handset"></i>quan@gmail.com</span>
                             </div>
                         </div>
-                        @* <input type="text" class="form-control" placeholder="Your Email">
-                        <input type="text" class="form-control" placeholder="Your Phone">
-                        <p>I'm interested in this property [ID 123456] and I'd like to know more details.</p> *@
                         <button class="btn btn-common fullwidth mt-4">Lưu thông tin</button>
                     </div>
                 </div>
@@ -194,4 +175,189 @@
     </div>
 
 </div>
-<!-- End Content -->    
+<!-- End Content -->     *@
+@model TQuanHome.Areas.Identity.Data.PostInfo
+@{
+    var isSavedClass = ViewData["IsSavedClass"] as string;
+    ViewData["Title"] = "Chi tiết tin đăng";
+}
+
+<!-- Start Content -->
+<div id="content" class="section-padding">
+    <div class="container">
+        <div class="property-details">
+            <div class="row">
+                <h4 > @Model.PostTitle</h4>
+                <br />
+                <p> <span class="label-status label">Đang cho thuê</span></p>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-xs-12">
+                    <div class="info">
+                        <p class="address"><i class="lni-map-marker"></i> @Model.Ward.WardName, @Model.District.DistrictName, @Model.Province.ProvinceName</p> <br />
+                        <p class="address"><i class="lni-map-marker"></i> @Model.AddressDetail</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-xs-12">
+                        <div class="others">
+                            <ul>
+                                <li><span>@String.Format("{0:n0}", Model.Price)</span></li>
+                             <!--<li><button class="widget-button "><i class="lni-heart"></i></button></li> -->
+                            <li>
+                                <button id="saveButton" class="widget-button" class="@(isSavedClass == "saved" ? "saved" : "not-saved")" onclick="toggleSave(@Model.PostId)">
+                                   @*  @(isSavedClass == "saved" ? "Unsave" : "Save") *@
+                                    <span>
+                                        @if (isSavedClass == "saved")
+                                        {
+                                            <i class="lni-heart filled-heart"></i> <!-- Biểu tượng trái tim có màu -->
+                                           
+                                        }
+                                        else
+                                        {
+                                            <i class="lni-heart"></i> <!-- Biểu tượng trái tim không có màu -->
+                                                                  }
+                                    </span>
+                                </button>
+                                </li>
+
+                            </ul>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <!-- Product Info Start -->
+            <div class="col-lg-8 col-md-12 col-xs-12">
+                <div class="property-slider">
+                    <div id="property-slider" class="owl-carousel owl-theme">
+                        <div class="item">
+                            <img src="@Model.Img1" alt="">
+                        </div>
+                        @* Add more images if available *@
+                        @if (!string.IsNullOrEmpty(Model.Img2))
+                        {
+                            <div class="item">
+                                <img src="@Model.Img2" alt="">
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.Img3))
+                        {
+                            <div class="item">
+                                <img src="@Model.Img3" alt="">
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="inner-box property-dsc">
+                    <h2 class="desc-title">Thông tin chi tiết</h2>
+                    <p>
+                        @Model.Description
+                    </p>
+                </div>
+            </div>
+
+            <!--Sidebar-->
+            <aside id="sidebar" class="col-lg-4 col-md-12 col-xs-12 right-sidebar">
+                <!-- Property Agent Widget -->
+                <div class="widget mt3">
+                    <div class="agent-inner">
+                        <div class="agent-title">
+                            <div class="agent-photo">
+                                <a href="#"><img src="~/assets/img/avatar/default.jpg" alt="Avatar"></a>
+                            </div>
+                            <div class="agent-details">
+                                <h3><a href="#">@Model.UserName</a></h3>
+                                <span><i class="lni-phone-handset"></i>@Model.UserName</span>
+                                <span><i class="lni-envelope"></i>@Model.UserName</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-common fullwidth mt-4">Lưu thông tin</button>
+                    </div>
+                </div>
+            </aside>
+            <!--End sidebar-->
+        </div>
+        @* <div class=" = row">
+            @Html.Partial("_SimilarPosts", (List<TQuanHome.Areas.Identity.Data.PostInfo>)ViewBag.SimilarPosts)
+        </div> *@
+    </div>
+
+    @* <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="desc-title">Bài đăng tương tự</h2>
+            </div>
+            @foreach (var similarPost in Model.SimilarPosts)
+            {
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="property-main">
+                        <div class="property-wrap">
+                            <div class="property-item">
+                                <div class="item-thumb">
+                                    <a class="hover-effect" href="@Url.Action("Index", "Detail", new { id = similarPost.Id })">
+                                        <img class="img-fluid" src="~/images/Posts/@similarPost.Img1" alt="">
+                                    </a>
+                                    <div class="label-inner">
+                                        <span class="label-status label">Đang cho thuê</span>
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <h3 class="property-title">
+                                        <a href="@Url.Action("Index", "Detail", new { id = similarPost.Id })">@similarPost.PostTitle</a>
+                                    </h3>
+                                    <div class="adderess">
+                                        <i class="lni-map-marker"></i>@similarPost.AddressDetail
+                                    </div>
+                                    <div class="pricin-list">
+                                        <div class="property-price">
+                                            <span>@String.Format("{0:n0}", similarPost.Price) đ/tháng</span>
+                                        </div>
+                                        <p>
+                                            Đã đăng @((DateTime.Now - similarPost.PostDate).Days == 0 ? "Vừa đăng hôm nay" : (DateTime.Now - similarPost.PostDate).Days == 1 ? "Vừa đăng hôm qua" : $"Đã đăng {(DateTime.Now - similarPost.PostDate).Days} ngày trước")
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div> *@
+</div>
+@section Scripts {
+    <script>
+        function toggleSave(postId) {
+            fetch('/Detail/SavePost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ PostId: postId })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const saveButton = document.getElementById('saveButton');
+                    if (data.saved) {
+                        saveButton.classList.remove('not-saved');
+                        saveButton.classList.add('saved');
+                        //saveButton.innerText = 'Unsave';
+                    } else {
+                        saveButton.classList.remove('saved');
+                        saveButton.classList.add('not-saved');
+                       // saveButton.innerText = 'Save';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+}

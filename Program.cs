@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TQuanHome.Areas.Identity.Data;
-using TQuanHome.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("TQuanHomeContextConnection") ?? throw new InvalidOperationException("Connection string 'TQuanHomeContextConnection' not found.");
 
@@ -9,6 +11,10 @@ builder.Services.AddDbContext<TQuanHomeContext>(options => options.UseSqlServer(
 
 builder.Services.AddDefaultIdentity<TQuanHomeUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<TQuanHomeContext>();
 
+/*builder.Services.Configure<RazorPagesOptions>(options =>
+{
+    options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/MyPost", "/Identity/Account/Manage/MyPost");
+});*/
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -22,6 +28,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+    
+
+ 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

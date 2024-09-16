@@ -1,0 +1,22 @@
+﻿@model List<TQuanHome.Areas.Identity.Data.PostInfo>
+
+<h2>Similar Posts</h2>
+<div class="similar-posts">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var post in Model)
+        {
+            <div class="post-item">
+                <h3>@post.PostTitle</h3>
+                <p>Price: $@post.Price</p>
+                <p>Address: @post.AddressDetail</p>
+                <p>Date: @post.PostDate.ToString("dd.MM.yyyy")</p>
+                <a href="@Url.Action("Index", "Detail", new { id = post.PostId })">View Details</a>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No similar posts found.</p>
+    }
+</div>

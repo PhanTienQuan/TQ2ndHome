@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<TQuanHome.Areas.Identity.Data.PostInfo>
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -161,9 +162,8 @@
                 <div class="col-lg-3 col-md-6 col-xs-12">
                     <div class="search-category-container">
                         <label class="styled-select">
-                            <select class="classic">
-                                <option>Tỉnh/Thành phố</option>
-                                <option>Rentals</option>
+                            <select class="classic" id="provinces">
+                                <option value="">Tỉnh/Thành phố</option>
                             </select>
                         </label>
                     </div>
@@ -171,16 +171,8 @@
                 <div class="col-lg-3 col-md-6 col-xs-12">
                     <div class="search-category-container">
                         <label class="styled-select">
-                            <select class="classic">
-                                <option>Quận/Huyện</option>
-                                <option>Apartments (3)</option>
-                                <option>Houses (2)</option>
-                                <option>Condos (1)</option>
-                                <option>Industrial (2)</option>
-                                <option>Land (3)</option>
-                                <option>Offices (1)</option>
-                                <option>Retail (2)</option>
-                                <option>Villas (1)</option>
+                            <select class="classic" id="districts">
+                                <option value="">Quận/Huyện</option>
                             </select>
                         </label>
                     </div>
@@ -188,14 +180,8 @@
                 <div class="col-lg-3 col-md-6 col-xs-12">
                     <div class="search-category-container">
                         <label class="styled-select">
-                            <select class="classic">
-                                <option>Phường/Xã</option>
-                                <option>New York</option>
-                                <option>California</option>
-                                <option>Washington</option>
-                                <option>Chicago</option>
-                                <option>Phoenix</option>
-                                <option>Birmingham</option>
+                            <select class="classic" id="wards">
+                                <option value="">Phường/Xã</option>
                             </select>
                         </label>
                     </div>
@@ -225,7 +211,7 @@
 <!-- Property Section Start -->
 <section class="property section-padding">
     <div class="container">
-        <div class="row">
+        @* <div class="row">
             <div class="col-12">
                 <div class="section-title-header text-center">
                     <h2 class="section-title">Tin đăng nổi bật</h2>
@@ -395,6 +381,46 @@
                     <a href="listing.html" class="btn btn-common">Browse All</a>
                 </div>
             </div>
+        </div> *@
+        <div class="row">
+            <div class="col-12">
+                <h2 class="desc-title">Đề xuất cho bạn</h2>
+            </div>
+            @foreach (var similarPost in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="property-main">
+                        <div class="property-wrap">
+                            <div class="property-item">
+                                <div class="item-thumb">
+                                    <a class="hover-effect" href="@Url.Action("Detail", "List", new { id = similarPost.PostId })">
+                                        <img class="img-fluid-card-index" src="@similarPost.Img1" alt="">
+                                    </a>
+                                    <div class="label-inner">
+                                        <span class="label-status label">Đang cho thuê</span>
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <h3 class="property-title">
+                                        <a href="@Url.Action("Index", "Detail", new { id = similarPost.PostId })">@similarPost.PostTitle</a>
+                                    </h3>
+                                    <div class="adderess">
+                                        <i class="lni-map-marker"></i>@similarPost.AddressDetail
+                                    </div>
+                                    <div class="pricin-list">
+                                        <div class="property-price">
+                                            <span>@String.Format("{0:n0}", similarPost.Price) đ/tháng</span>
+                                        </div>
+                                        <p>
+                                           @((DateTime.Now - similarPost.PostDate).Days == 0 ? "Vừa đăng hôm nay" : (DateTime.Now - similarPost.PostDate).Days == 1 ? "Vừa đăng hôm qua" : $"Đã đăng {(DateTime.Now - similarPost.PostDate).Days} ngày trước")
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </section>

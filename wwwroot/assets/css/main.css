@@ -1,4 +1,4 @@
-/*
+﻿/*
 Theme Name:       EstateBit - Real Estate Bootstrap HTML5 Template
 Author:           UIdeck
 Author URI:       http://uideck.com
@@ -1634,9 +1634,10 @@ Property wrapper Style
   color: #888;
 }
 
-.property-details .others {
-  margin-top: 34px;
-}
+    .property-details .others {
+        /*margin-top: 34px;*/
+        margin-bottom: 34px;
+    }
 
 .property-details .others ul li {
   float: right;
@@ -4332,3 +4333,41 @@ textarea {
   color: #fff;
   border-color: #fff;
 }
+
+/* Định nghĩa kiểu cho nút đã lưu */
+.save-button.saved {
+    background-color: #0dcdbd;
+    color: white;
+    border-color: #0dcdbd;
+}
+
+.widget-button {
+    display: flex; /* Sử dụng flexbox để căn giữa nội dung */
+    align-items: center; /* Căn các phần tử theo chiều dọc vào giữa */
+    justify-content: center; /* Căn các phần tử theo chiều ngang vào giữa */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+    .widget-button .lni-heart {
+        /* Biểu tượng trái tim không có màu */
+        color: #000; /* Màu chữ của biểu tượng */
+    }
+
+        .widget-button .lni-heart.filled-heart {
+            /* Biểu tượng trái tim có màu */
+            color: #0dcdbd; /* Màu chữ của biểu tượng */
+        }
+
+    .widget-button.saved {
+        background-color: #0dcdbd; /* Màu nền của nút khi đã lưu */
+        color: #fff; /* Màu chữ của nút khi đã lưu */
+    }
+
+    .widget-button:hover {
+        /* Hiệu ứng hover */
+        opacity: 0.8;
+    }

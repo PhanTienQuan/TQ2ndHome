@@ -29,40 +29,40 @@ namespace TQuanHome.Areas.Identity.Pages.Account.Manage
        
         public string Username { get; set; }
 
-      
         [TempData]
         public string StatusMessage { get; set; }
 
+     
         [BindProperty]
         public InputModel Input { get; set; }
 
-   
+    
         public class InputModel
         {
-
+        
             [Phone]
-            [Display(Name = "Số điện thoại")]
+            [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
 
             [Display(Name = "Tên")]
             public string FullName { get; set; }
         }
 
-            private async Task LoadAsync(TQuanHomeUser user)
-            {
+        private async Task LoadAsync(TQuanHomeUser user)
+        {
             var userData = await _userManager.GetUserAsync(User);
-                var userName = await _userManager.GetUserNameAsync(user);
-                var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-                var fullname = userData.FullName; 
+            var userName = await _userManager.GetUserNameAsync(user);
+            var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var fullname = userData.FullName;
+            Username = userName;
 
-                Username = userName;
-
-                Input = new InputModel
-                {
-                    PhoneNumber = phoneNumber
-                    , FullName = fullname
-                };
-            }
+            Input = new InputModel
+            {
+                PhoneNumber = phoneNumber
+               ,FullName = fullname
+            };
+        }
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -100,7 +100,7 @@ namespace TQuanHome.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-            // Kiểm tra và cập nhật FullName nếu khác nhau
+            //check name update
             if (Input.FullName != user.FullName)
             {
                 user.FullName = Input.FullName;
@@ -114,6 +114,9 @@ namespace TQuanHome.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Thông tin tài khoản đã được cập nhật";
+
+            await _signInManager.RefreshSignInAsync(user);
+            StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }
     }

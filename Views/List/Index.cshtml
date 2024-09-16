@@ -1,236 +1,189 @@
-﻿@{
-    ViewData["Title"] = "Danh sach";
+﻿@model IPagedList<TQuanHome.Areas.Identity.Data.PostInfo>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+@{
+    ViewData["Title"] = "Danh sách tin đăng";
 }
-
     <!-- Main container Start -->
     <div class="main-container section-padding">
       <div class="container">
         <div class="row">
-          <div class="col-lg-9 col-md-12 col-xs-12">
-            <!-- Product Filter Start -->
-            <div class="product-filter">
-              <!-- Sort by -->
-              <div class="sort-by">
-                <span>Sort by:</span>
-                <div class="sort-by-select">
-                  <select class="classic">
-                    <option>Default Order</option>  
-                    <option>Price Low to High</option>
-                    <option>Price High to Low</option>
-                    <option>Newest Properties</option>
-                    <option>Oldest Properties</option>
-                  </select>
-                </div>
-              </div>
-              <!-- Layout Switcher -->
-              <div class="layout-switcher">
-                <a href="#" class="list active">
-                  <i class="lni-menu"></i>
-                </a>
-                <a href="#" class="grid">
-                  <i class="lni-grid"></i>
-                </a>
-              </div>
-              <p class="text-left">42 homes found</p>
-            </div>
-            <!-- Product Filter End -->
-
-            <!-- Listings Star -->
-            <div class="listing-container list-layout">
-              <div class="property-main">
-                <div class="property-wrap">
-                  <div class="property-item">
-                    <a  class="hover-effect" asp-area="" asp-controller="List" asp-action="Details">
-                      <div class="item-thumb">
-                        <img class="img-fluid-card-index" src="~/assets/img/property/house1.jpg" alt="">
-                      <div class="label-inner">
-                        <span class="label-status label bg-yellow">Hết phòng</span>
-                      </div>
-                    </div>
-                    <div class="item-body">
-                      <h3 class="property-title"><a href="property.html">Phòng trọ có cửa số cây xanh đầu Câu Rồng</a></h3>
-                      <div class="adderess"><i class="lni-map-marker"></i> An Hải Tây, Thanh Khê, Đà Nẵng</div>
-                      <div class="pricin-list">
-                        <div class="property-price">
-                          <span>2.500.000/tháng</span>
+            <div class="col-lg-9 col-md-12 col-xs-12">
+                <div class="product-filter">
+                    <div class="sort-by">
+                        <span>Sort by:</span>
+                        <div class="sort-by-select">
+                            <select class="classic">
+                                <option>Default Order</option>
+                                <option>Price Low to High</option>
+                                <option>Price High to Low</option>
+                                <option>Newest Properties</option>
+                                <option>Oldest Properties</option>
+                            </select>
                         </div>
-                         <p>Đã đăng 9 ngày trước</p>
-                      </div>
-                    </a>
-                    </div>               
-                  </div>              
-                </div>
-              </div>
-
-              <div class="property-main">
-                <div class="property-wrap">
-                  <div class="property-item">
-                    <div class="item-thumb">
-                      <a class="hover-effect" href="property.html">
-                        <img class="img-fluid-card-index" src="~/assets/img/property/house2.jpg" alt="">
-                      </a>
-                      <div class="label-inner">
-                        <span class="label-status label">Đang cho thuê</span>
-                      </div>
                     </div>
-                    <div class="item-body">
-                      <h3 class="property-title"><a href="property.html">Phòng trọ 346 Mỹ An đầy đủ nội thất an ninh 24/24</a></h3>
-                      <div class="adderess"><i class="lni-map-marker"></i> Mỹ An, Ngũ Hành Sơn, Đà Nẵng</div>
-                      <div class="pricin-list">
-                        <div class="property-price">
-                          <span>2.200.000/tháng</span>
-                        </div>
-                       <p>Đã đăng 4 ngày trước</p>
-                      </div>
-                    </div>               
-                  </div>              
-                </div>
-              </div>
-
-              <div class="property-main">
-                <div class="property-wrap">
-                  <div class="property-item">
-                    <div class="item-thumb">
-                      <a class="hover-effect" href="property.html">
-                        <img class="img-fluid-card-index" src="~/assets/img/property/house3.jpg" alt="">
-                      </a>
-                      <div class="label-inner">
-                        <span class="label-status label">Đang cho thuê</span>
-                      </div>
+                    <div class="layout-switcher">
+                        <a href="#" class="list active"><i class="lni-menu"></i></a>
+                        <a href="#" class="grid"><i class="lni-grid"></i></a>
                     </div>
-                    <div class="item-body">
-                      <h3 class="property-title"><a href="property.html">Phòng mới có tháng máy gần khu CNC, FPT, UFM</a></h3>
-                      <div class="adderess"><i class="lni-map-marker"></i> Long Trường, Quận 9, Ngũ Hành Sơn</div>
-                      <div class="pricin-list">
-                        <div class="property-price">
-                          <span>3.200.000/tháng</span>
-                        </div>
-                         <p>Đã đăng 2 ngày trước</p>
-                      </div>
-                    </div>               
-                  </div>              
+                    <p class="text-left">@Model.TotalItemCount homes found</p>
                 </div>
-              </div>
 
-              <div class="property-main">
-                <div class="property-wrap">
-                  <div class="property-item">
-                    <div class="item-thumb">
-                      <a class="hover-effect" href="property.html">
-                        <img class="img-fluid-card-index" src="~/assets/img/property/house4.jpg" alt="">
-                      </a>
-                      <div class="label-inner">
-                        <span class="label-status label">Đang cho thuê</span>
-                      </div>
-                    </div>
-                    <div class="item-body">
-                      <h3 class="property-title"><a href="property.html">Kí túc xá, SleepBox cao cấp giá rẻ Thủ Đức</a></h3>
-                      <div class="adderess"><i class="lni-map-marker"></i> Linh Xuân, Thủ Đức</div>
-                      <div class="pricin-list">
-                        <div class="property-price">
-                                        <span>1.400.000/tháng</span>
+                <div class="listing-container list-layout">
+                    @foreach (var item in Model)
+                    {
+                        <div class="property-main">
+                            <a class="hover-effect" asp-area="" asp-controller="List" asp-action="Detail" asp-route-id="@item.PostId">
+                                <div class="property-wrap">
+                                    <div class="property-item">
+                                        <div class="item-thumb">
+                                            <img class="img-fluid-card-index" src="@item.Img1" alt="">
+                                            <div class="label-inner">
+                                                <span class="label-status label @(item.IsFull == 1 ? "bg-yellow" : "")">@((item.IsFull == 1) ? "Hết phòng" : "Đang cho thuê")</span>
+                                            </div>
+                                        </div>
+                                        <div class="item-body">
+                                            <h3 class="property-title"><a href="">@item.PostTitle</a></h3>
+                                            <div class="adderess"><i class="lni-map-marker"></i> @item.Ward.WardName, @item.District.DistrictName, @item.Province.ProvinceName</div>
+                                            <div class="pricin-list">
+                                                <div class="property-price">
+                                                    <span>@String.Format("{0:#,##0}", item.Price) VNĐ/tháng</span>
+                                                </div>
+                                                <p>
+                                                    @if ((DateTime.Now - item.PostDate).Days == 0)
+                                                    {
+                                                        <span>Vừa đăng hôm nay</span>
+                                                    }
+                                                    else if ((DateTime.Now - item.PostDate).Days == 1)
+                                                    {
+                                                        <span>Vừa đăng hôm qua</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>Đã đăng @((DateTime.Now - item.PostDate).Days) ngày trước</span>
+                                                    }
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            
                         </div>
-                       <p>Đã đăng 6 ngày trước </p>
-                      </div>
-                    </div>               
-                  </div>              
+                    }
                 </div>
-              </div>
+
+                <div class="pagination-container">
+                    <nav>
+                        <ul class="pagination">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+                       {
+                           LiElementClasses = new[] { "page-item" },
+                           PageClasses = new[] { "page-link" },
+                           UlElementClasses = new[] { "pagination" },
+                           LinkToPreviousPageFormat = "Trước",
+                           LinkToNextPageFormat = "Tiếp",
+                           /* PreviousElementClass = "btn btn-common",
+                           NextElementClass = "btn btn-common"*/
+                       })
+                        </ul>
+                    </nav>
+                </div>
+
+                @* <div class="pagination-container">
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item"><a class="btn btn-common" href="#"><i class="lni-chevron-left"></i> Trước </a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="btn btn-common" href="#">Tiếp <i class="lni-chevron-right"></i></a></li>
+                        </ul>
+                    </nav>
+                </div> *@
             </div>
             <!-- Listings End -->
-            
-            <div class="pagination-container">
-              <nav>
-                <ul class="pagination">
-                  <li class="page-item"><a class="btn btn-common" href="#"><i class="lni-chevron-left"></i> Trước </a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="btn btn-common" href="#">Tiếp <i class="lni-chevron-right"></i></a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-12 col-xs-12">
-            <!-- Sidebar Start -->
-            <div class="sidebar sticky right">
-              <!-- Widget -->
-              <div class="widget">
-                <h3 class="sidebar-title">Tìm bài đăng</h3>
-                <div class="row with-forms">
-                    <div class="search-add float-right">
-                        <form method="post">
-                            <div class="form-group">
-                                <input type="search" name="field-name" value="" placeholder="Tìm" required="">
-                                <button type="submit" class="search-btn"><span class="lni-search"></span></button>
+
+            <div class="col-lg-3 col-md-12 col-xs-12">
+                <!-- Sidebar Start -->
+                <div class="sidebar sticky right">
+                    <!-- Widget -->
+                    <div class="widget">
+                        <h3 class="sidebar-title">Tìm bài đăng</h3>
+                        <div class="row with-forms">
+                            <div class="search-add float-right">
+                                <form method="post">
+                                    <div class="form-group">
+                                        <input type="search" name="field-name" value="" placeholder="Tìm" required="">
+                                        <button type="submit" class="search-btn"><span class="lni-search"></span></button>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
+                        <div class="row with-forms">
+                            <div class="col-md-12">
+                                <select class="classic">
+                                    <option>Tỉnh/Thành phố</option>
+                                    <option>Apartments (3)</option>
+                                    <option>Houses (2)</option>
+                                    <option>Condos (1)</option>
+                                    <option>Industrial (2)</option>
+                                    <option>Land (3)</option>
+                                    <option>Offices (1)</option>
+                                    <option>Retail (2)</option>
+                                    <option>Villas (1)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row with-forms">
+                            <div class="col-md-12">
+                                <select class="classic">
+                                    <option>Quận/Huyện</option>
+                                    <option>Alabama</option>
+                                    <option>Arkansas</option>
+                                    <option>California</option>
+                                    <option>Colorado</option>
+                                    <option>Connecticut</option>
+                                    <option>Florida</option>
+                                    <option>Indiana</option>
+                                    <option>New York</option>
+                                    <option>Washington</option>
+                                    <option>West Virginia</option>
+                                    <option>Wisconsin</option>
+                                    <option>Wyoming</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row with-forms">
+                            <div class="col-md-12">
+                                <select class="classic">
+                                    <option>Phường/Xã</option>
+                                    <option>New York</option>
+                                    <option>California</option>
+                                    <option>Washington</option>
+                                    <option>Chicago</option>
+                                    <option>Phoenix</option>
+                                    <option>Birmingham</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Price Range -->
+                        <div class="price-range">
+                            <label>Lọc theo giá</label>
+                            <div id="area-price">
+                                <span>Từ</span>
+                                <input type="text" class="form-control">
+                                <span>Đến</span>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <button class="fullwidth btn btn-common">Tìm</button>
                     </div>
+                    <!-- Widget End -->
                 </div>
-                <div class="row with-forms">
-                  <div class="col-md-12">
-                    <select class="classic">
-                      <option>Tỉnh/Thành phố</option>
-                      <option>Apartments (3)</option>
-                      <option>Houses (2)</option>
-                      <option>Condos (1)</option>
-                      <option>Industrial (2)</option>
-                      <option>Land (3)</option>
-                      <option>Offices (1)</option>
-                      <option>Retail (2)</option>                              
-                      <option>Villas (1)</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row with-forms">
-                  <div class="col-md-12">
-                    <select class="classic">
-                      <option>Quận/Huyện</option> 
-                      <option>Alabama</option>
-                      <option>Arkansas</option>
-                      <option>California</option>
-                      <option>Colorado</option>
-                      <option>Connecticut</option>
-                      <option>Florida</option>
-                      <option>Indiana</option>
-                      <option>New York</option>
-                      <option>Washington</option>
-                      <option>West Virginia</option>
-                      <option>Wisconsin</option>
-                      <option>Wyoming</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row with-forms">
-                  <div class="col-md-12">
-                    <select class="classic">
-                      <option>Phường/Xã</option>
-                      <option>New York</option>
-                      <option>California</option>
-                      <option>Washington</option>
-                      <option>Chicago</option>
-                      <option>Phoenix</option>
-                      <option>Birmingham</option>
-                    </select>
-                  </div>
-                </div>
-                <!-- Price Range -->
-                <div class="price-range">
-                  <label>Lọc theo giá</label>
-                  <div id="area-price">
-                    <span>Từ</span>
-                    <input type="text" class="form-control">
-                    <span>Đến</span>
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-                <button class="fullwidth btn btn-common">Tìm</button>
-              </div>
-              <!-- Widget End -->
+                <!-- Sidebar End -->
             </div>
-            <!-- Sidebar End -->
-          </div>
         </div>
       </div>
     </div>

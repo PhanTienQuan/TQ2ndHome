@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TQuanHome.Data;
+using TQuanHome.Areas.Identity.Data;
 
 #nullable disable
 
@@ -159,6 +159,138 @@ namespace TQuanHome.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.District", b =>
+                {
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("int")
+                        .HasColumnName("DistrictID");
+
+                    b.Property<string>("DistrictName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int?>("ProvinceId")
+                        .HasColumnType("int")
+                        .HasColumnName("ProvinceID");
+
+                    b.HasKey("DistrictId")
+                        .HasName("PK__District__85FDA4A634D7C274");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("Districts");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.PostInfo", b =>
+                {
+                    b.Property<int>("PostId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("PostID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PostId"));
+
+                    b.Property<string>("AddressDetail")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("int")
+                        .HasColumnName("DistrictID");
+
+                    b.Property<string>("Img1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IsFull")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PostDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("PostTitle")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProvinceId")
+                        .HasColumnType("int")
+                        .HasColumnName("ProvinceID");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<int?>("WardId")
+                        .HasColumnType("int")
+                        .HasColumnName("WardID");
+
+                    b.HasKey("PostId")
+                        .HasName("PK__PostInfo__AA12603894F64089");
+
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.HasIndex("WardId");
+
+                    b.ToTable("PostInfo", (string)null);
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.Province", b =>
+                {
+                    b.Property<int>("ProvinceId")
+                        .HasColumnType("int")
+                        .HasColumnName("ProvinceID");
+
+                    b.Property<string>("ProvinceName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("ProvinceId")
+                        .HasName("PK__Province__FD0A6FA3A0003DFC");
+
+                    b.ToTable("Provinces");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.SavedPost", b =>
+                {
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("SaveDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("PostId", "UserName");
+
+                    b.HasIndex("PostId")
+                        .IsUnique();
+
+                    b.ToTable("SavedPosts");
+                });
+
             modelBuilder.Entity("TQuanHome.Areas.Identity.Data.TQuanHomeUser", b =>
                 {
                     b.Property<string>("Id")
@@ -235,6 +367,28 @@ namespace TQuanHome.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.Ward", b =>
+                {
+                    b.Property<int>("WardId")
+                        .HasColumnType("int")
+                        .HasColumnName("WardID");
+
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("int")
+                        .HasColumnName("DistrictID");
+
+                    b.Property<string>("WardName")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("WardId")
+                        .HasName("PK__Wards__C6BD9BEADC878773");
+
+                    b.HasIndex("DistrictId");
+
+                    b.ToTable("Wards");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -284,6 +438,80 @@ namespace TQuanHome.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.District", b =>
+                {
+                    b.HasOne("TQuanHome.Areas.Identity.Data.Province", "Province")
+                        .WithMany("Districts")
+                        .HasForeignKey("ProvinceId")
+                        .HasConstraintName("FK__Districts__Provi__693CA210");
+
+                    b.Navigation("Province");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.PostInfo", b =>
+                {
+                    b.HasOne("TQuanHome.Areas.Identity.Data.District", "District")
+                        .WithMany("PostInfos")
+                        .HasForeignKey("DistrictId")
+                        .HasConstraintName("FK__PostInfo__Distri__6FE99F9F");
+
+                    b.HasOne("TQuanHome.Areas.Identity.Data.Province", "Province")
+                        .WithMany("PostInfos")
+                        .HasForeignKey("ProvinceId")
+                        .HasConstraintName("FK__PostInfo__Provin__6EF57B66");
+
+                    b.HasOne("TQuanHome.Areas.Identity.Data.Ward", "Ward")
+                        .WithMany("PostInfos")
+                        .HasForeignKey("WardId")
+                        .HasConstraintName("FK__PostInfo__WardID__70DDC3D8");
+
+                    b.Navigation("District");
+
+                    b.Navigation("Province");
+
+                    b.Navigation("Ward");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.SavedPost", b =>
+                {
+                    b.HasOne("TQuanHome.Areas.Identity.Data.PostInfo", "PostInfo")
+                        .WithOne()
+                        .HasForeignKey("TQuanHome.Areas.Identity.Data.SavedPost", "PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PostInfo");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.Ward", b =>
+                {
+                    b.HasOne("TQuanHome.Areas.Identity.Data.District", "District")
+                        .WithMany("Wards")
+                        .HasForeignKey("DistrictId")
+                        .HasConstraintName("FK__Wards__DistrictI__6C190EBB");
+
+                    b.Navigation("District");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.District", b =>
+                {
+                    b.Navigation("PostInfos");
+
+                    b.Navigation("Wards");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.Province", b =>
+                {
+                    b.Navigation("Districts");
+
+                    b.Navigation("PostInfos");
+                });
+
+            modelBuilder.Entity("TQuanHome.Areas.Identity.Data.Ward", b =>
+                {
+                    b.Navigation("PostInfos");
                 });
 #pragma warning restore 612, 618
         }

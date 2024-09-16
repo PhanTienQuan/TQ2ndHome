@@ -1,0 +1,51 @@
+﻿@page 
+@model List<TQuanHome.Areas.Identity.Data.PostInfo>
+
+
+<div class="my-properties">
+    <table class="table-responsive">
+        <thead>
+            <tr>
+                <th>Thông tin</th>
+                <th></th>
+                <th>Ngày đăng</th>
+                <th>Lượt xem</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td class="image">
+                        <a href=""><img alt="@post.Img1" src="Image" class="img-fluid"></a>
+                    </td>
+                    <td>
+                        <div class="inner">
+                            <a href="property.html"><h2>@post.PostTitle</h2></a>
+                            <figure><i class="lni-map-marker"></i> @post.AddressDetail</figure>
+                            <div class="tag price">$ @post.Price</div>
+                        </div>
+                    </td>
+                    <td>@post.PostDate.ToString("dd.MM.yyyy")</td>
+                    <td>10</td>
+                    <td class="actions">
+                        <a href="#" class="edit"><i class="lni-pencil"></i>Edit</a>
+                        <a href="#"><i class="delete lni-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="pagination-container">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item"><a class="btn btn-common" href="#"><i class="lni-chevron-left"></i> Trước </a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="btn btn-common" href="#">Sau<i class="lni-chevron-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

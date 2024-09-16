@@ -1,0 +1,69 @@
+﻿@model List<TQuanHome.Areas.Identity.Data.PostInfo>
+
+<div class="my-properties">
+    <table class="table-responsive">
+        <thead>
+            <tr>
+                <th>Thông tin</th>
+                <th></th>
+                <th>Ngày đăng</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td class="image">
+                        <a href="@Url.Action("Index", "Detail", new { id = post.PostId })"><img alt="@post.Img1" src="@post.Img1" class="img-fluid"></a>
+                    </td>
+                    <td>
+                        <div class="inner">
+                            <a href="@Url.Action("Index", "Detail", new { id = post.PostId })"><h2>@post.PostTitle</h2></a>
+                            <figure><i class="lni-map-marker"></i> @post.AddressDetail</figure>
+                            <div class="tag price">$ @post.Price</div>
+                        </div>
+                    </td>
+                    <td>@post.PostDate.ToString("dd/MM/yyyy")</td>
+          
+                    <td class="actions">
+                        <a href="#" class="edit"><i class="lni-pencil"></i>Edit</a>
+                        <a href="#" class="delete-post" data-post-id="@post.PostId">
+                            <i class="delete lni-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".delete-post").on("click", function (e) {
+            e.preventDefault();
+            var postId = $(this).data("post-id");
+            if (confirm("Bạn có chắc chắn muốn xóa bài đăng này khỏi danh sách đã lưu không?")) {
+                $.ajax({
+                    url: "@Url.Action("DeleteSavedPost", "SavedPost")",
+                    type: "POST",
+                    data: { postId: postId },
+                    success: function (response) {
+                        if (response.deleted) {
+                            // Xử lý thành công, có thể làm gì đó nếu cần thiết
+                            alert("Đã xóa bài đăng khỏi danh sách đã lưu thành công!");
+                            // Cập nhật giao diện nếu cần
+                            // Ví dụ: $(this).closest("tr").remove();
+                        } else {
+                            alert("Không thể xóa bài đăng khỏi danh sách đã lưu.");
+                        }
+                    },
+                    error: function () {
+                        alert("Đã xảy ra lỗi trong quá trình xóa bài đăng khỏi danh sách đã lưu.");
+                    }
+                });
+            }
+        });
+    });
+</script>

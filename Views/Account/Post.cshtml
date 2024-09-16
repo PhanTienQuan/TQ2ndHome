@@ -1,0 +1,194 @@
+﻿@model TQuanHome.ViewModels.PostCompositeVM
+@* @model IEnumerable<TQuanHome.Areas.Identity.Data.Province> *@
+@* @model TQuanHome.ViewModels.PostVM *@
+@{
+    ViewData["Title"] = "Post New";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Ueser Section Start -->
+<section class="user-page submit-property section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="submit-form">
+                    <form asp-action="Post" asp-controller="Account" method="post" enctype="multipart/form-data">
+                        <h3 class="heading">Đăng tin mới</h3>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <!-- Tiêu đề tin đăng -->
+                                <div class="form-group">
+                                    <label>Tiêu đề tin đăng</label>
+                                    <input asp-for="PostVM.PostTitle" class="form-control" placeholder="Nhập tiêu đề ..." />
+                                    <span asp-validation-for="PostVM.PostTitle" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <!-- Tỉnh/Thành phố -->
+                                <div class="form-group">
+                                    <label>Tỉnh/Thành phố</label>
+                                    <select asp-for="PostVM.ProvinceId" class="classic" id="province-select">
+                                        <option value="">Chọn tỉnh/thành phố</option>
+                                        @foreach (var province in Model.Provinces)
+                                        {
+                                            <option value="@province.ProvinceId">@province.ProvinceName</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="PostVM.ProvinceId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <!-- Quận/Huyện -->
+                                <div class="form-group">
+                                    <label>Quận/Huyện</label>
+                                    <select asp-for="PostVM.DistrictId" class="classic" id="district-select" disabled>
+                                        <option value="">Chọn quận/huyện</option>
+                                    </select>
+                                    <span asp-validation-for="PostVM.DistrictId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <!-- P/Xã -->
+                                <div class="form-group">
+                                    <label>Phường/Xã</label>
+                                    <select asp-for="PostVM.WardId" class="classic" id="ward-select" disabled>
+                                        <option value="">Chọn phường/xã</option>
+                                    </select>
+                                    <span asp-validation-for="PostVM.WardId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-9">
+                                <!-- Địa chỉ -->
+                                <div class="form-group">
+                                    <label>Địa chỉ</label>
+                                    <input asp-for="PostVM.Address" class="form-control" placeholder="Nhập địa chỉ cụ thể" />
+                                    <span asp-validation-for="PostVM.Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-group">
+                                    <!-- Price -->
+                                    <label>Giá</label>
+                                    <input asp-for="PostVM.Price" class="form-control" placeholder="VND">
+                                    <span asp-validation-for="PostVM.Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-lg-12">
+                                <div class="form-group message">
+                                    <!-- mô tả chi tiế -->
+                                    <label>Mô tả chi tiết</label>
+                                    <textarea asp-for="PostVM.Description" class="form-control" placeholder="Nhập thêm thông tin mô tả chi tiết"></textarea>
+                                    <span asp-validation-for="PostVM.Description" class="text-danger"></span>                                 
+                                </div>
+                            </div>
+                        </div>
+                        @* <div class="row mb-3">
+                            <div class="col-lg-4">
+                                <label for="img1" class="form-label">Ảnh thứ nhất</label>
+                                <input asp-for="PostVM.Image1" class="form-control" type="file" id="img1" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="img1" class="form-label">Ảnh thứ hai</label>
+                                <input class="form-control" type="file" id="img1" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="img1" class="form-label">Ảnh thứ ba</label>
+                                <input class="form-control" type="file" id="img1" />
+                            </div>
+                        </div> *@
+                        <div class="row mb-3">
+                            <div class="col-lg-4">
+                                <label for="img1" class="form-label">Ảnh thứ nhất</label>
+                                <input asp-for="PostVM.Image1" class="form-control" type="file" id="img1" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="img2" class="form-label">Ảnh thứ hai</label>
+                                <input asp-for="PostVM.Image2" class="form-control" type="file" id="img2" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="img3" class="form-label">Ảnh thứ ba</label>
+                                <input asp-for="PostVM.Image3" class="form-control" type="file" id="img3" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 mt-3">
+                                <button type="submit" class="btn btn-common">Đăng</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Ueser Section End -->
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#province-select').change(function () {
+                var provinceId = $(this).val();
+                if (provinceId) {
+                    $.ajax({
+                        url: '/Account/GetDistricts',
+                        type: 'GET',
+                        data: { provinceId: provinceId },
+                        success: function (data) {
+                            $('#district-select').empty().append('<option value="">Chọn quận/huyện</option>');
+                            $.each(data, function (key, value) {
+                                $('#district-select').append('<option value="' + value.districtId + '">' + value.districtName + '</option>');
+                            });
+                            $('#district-select').prop('disabled', false);
+                            $('#ward-select').empty().append('<option value="">Chọn phường/xã</option>').prop('disabled', true);
+                        }
+                    });
+                } else {
+                    $('#district-select').empty().append('<option value="">Chọn quận/huyện</option>').prop('disabled', true);
+                    $('#ward-select').empty().append('<option value="">Chọn phường/xã</option>').prop('disabled', true);
+                }
+            });
+
+            $('#district-select').change(function () {
+                var districtId = $(this).val();
+                if (districtId) {
+                    $.ajax({
+                        url: '/Account/GetWards',
+                        type: 'GET',
+                        data: { districtId: districtId },
+                        success: function (data) {
+                            $('#ward-select').empty().append('<option value="">Chọn phường/xã</option>');
+                            $.each(data, function (key, value) {
+                                $('#ward-select').append('<option value="' + value.wardId + '">' + value.wardName + '</option>');
+                            });
+                            $('#ward-select').prop('disabled', false);
+                        }
+                    });
+                } else {
+                    $('#ward-select').empty().append('<option value="">Chọn phường/xã</option>').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+   @*  ---------------Display Noti-------------- *@
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <text>
+                    Swal.fire({
+                        title: 'Đăng tin thành công',
+                        text: 'Tin đăng của bạn đang đợi được xét duyệt để hiển thị.',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        confirmButtonColor: '#0dcdbd'
+                    });
+            </text>
+        }
+                });
+    </script>
+}
